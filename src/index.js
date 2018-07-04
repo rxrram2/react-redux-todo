@@ -12,7 +12,7 @@ import registerServiceWorker from './registerServiceWorker';
 const persistedData = loadData();
 const store = createStore(
     TasksReducer,
-    persistedData.todoData
+    persistedData ? persistedData.todoData : undefined
 );
 
 store.subscribe(() => {
