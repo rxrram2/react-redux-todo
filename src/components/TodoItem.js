@@ -10,13 +10,9 @@ export default class TodoItem extends React.Component {
         super(props);
         this.state.taskInfo = props.todo.task;        
     }
-    
-    /*
-    deleteTask(id) {
-        this.props.deleteTask(id);
-    }*/
 
-    editTask(id) {
+    editTask(evt, id) {
+        evt.preventDefault();
         this.setState({isEditing: true,taskInfo: this.props.todo.task});
     }
 
@@ -25,6 +21,7 @@ export default class TodoItem extends React.Component {
     }
 
     onClickHandlerEdit(event) {
+        event.preventDefault();
         var todo = this.props.todo;
         todo.task = this.state.taskInfo;
         this.props.updateTask(todo);
@@ -38,7 +35,7 @@ export default class TodoItem extends React.Component {
         };
     
         return(
-            <li onDoubleClick={(e)=> this.editTask(this.props.id)} className="list-group-item">
+            <li onDoubleClick={(e)=> this.editTask(e,this.props.id)} className="list-group-item">
                 {this.state.isEditing ? 
                 <div className="input-group">
                     <input id="editText" className="form-control" type='text' onChange={this.onChangeHandler.bind(this)} value={this.state.taskInfo}/>
