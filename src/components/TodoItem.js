@@ -33,7 +33,11 @@ export default class TodoItem extends React.Component {
             fontSize: '48px',
             color: 'green'
         };
-    
+
+        var trashIconStyle = {
+            color: 'red'
+        };
+
         return(
             <li onDoubleClick={(e)=> this.editTask(e,this.props.id)} className="list-group-item">
                 {this.state.isEditing ? 
@@ -45,8 +49,8 @@ export default class TodoItem extends React.Component {
                 <div>
                 <span className="float-left">{this.props.todo.task}</span>
                 <div className="float-right">
-                    <button className="btn btn-xs btn-danger img-circle" 
-                        onClick={(e) => this.props.deleteTask(this.props.id)}>X</button>
+                    <i onClick={(e) => this.editTask(e, this.props.id)} className="fas fa-pencil-alt fa-lg fa-fw" aria-hidden="true"></i>
+                    <i onClick={(e) => this.props.deleteTask(this.props.id)} className="fa fa-trash fa-lg" style={trashIconStyle} aria-hidden="true"></i>
                 </div>
                 </div>}
             </li>           
