@@ -29,8 +29,7 @@ export default class TodoItem extends React.Component {
     }
 
     render() {        
-        var mystyle = {
-            fontSize: '48px',
+        var editBtnStyle = {
             color: 'green'
         };
 
@@ -39,11 +38,11 @@ export default class TodoItem extends React.Component {
         };
 
         return(
-            <li onDoubleClick={(e)=> this.editTask(e,this.props.id)} className="list-group-item">
+            <li className="list-group-item">
                 {this.state.isEditing ? 
                 <div className="input-group">
                     <input id="editText" className="form-control" type='text' onChange={this.onChangeHandler.bind(this)} value={this.state.taskInfo}/>
-                    <i onClick={(e) => this.onClickHandlerEdit(e)} className="fa fa-check-circle float-right" style={mystyle} aria-hidden="true"></i>
+                    <i onClick={(e) => this.onClickHandlerEdit(e)} className="fa fa-check-circle fa-2x fa-fw float-right" style={editBtnStyle} aria-hidden="true"></i>
                 </div>
                 :
                 <div>
